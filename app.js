@@ -4,7 +4,7 @@
         const BACKEND_API_URL = "https://script.google.com/macros/s/AKfycbz2l6cQkl3tTDk75GthnMQwKTxRNMYsHxz_AE8mlR-Iq_rJ5i3sBx-8gZHMvfpQyNfD/exec";
         const SHEETS_CSV_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsEc_TZ1SB0jVoBqyRPyEeQBDx6IyKRJ71iPx0ReMWnhVoNJqEmSUhVJufc7MqKHICZPkYZIsne8iv/pub?output=csv";
 
-        const DEFAULT_CATEGORIES = ["Education", "Identification", "Admission", "Other"];
+        const DEFAULT_CATEGORIES = ["Education", "Identification", "College", "Other"];
         let documentInventory = [];
         let currentPath = []; // Array of strings representing current folder path, e.g. ["Education", "2026"]
 
