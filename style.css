@@ -284,4 +284,82 @@
         .cancel-btn { background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 10px 16px; border-radius: 4px; cursor: pointer; }
         .submit-btn { background: var(--accent); border: none; color: var(--bg); padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
         .submit-btn:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+
+        /* Navigation Control Panel Styles */
+        .nav-control-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+        }
+
+        .control-panel-title {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .nav-control-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn-icon {
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            width: 38px;
+            height: 38px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+        }
+
+        .nav-btn-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2px;
+            pointer-events: none;
+        }
+
+        .nav-btn-icon:hover:not(:disabled) {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .nav-btn-icon:active:not(:disabled) {
+            transform: translateY(1px);
+        }
+
+        .nav-btn-icon:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            background-color: transparent;
+            border-color: var(--border);
+            color: var(--text-muted);
+            box-shadow: none;
+            transform: none;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-btn-icon.loading svg {
+            animation: spin 0.8s linear infinite;
+            color: var(--accent);
+        }
+
    

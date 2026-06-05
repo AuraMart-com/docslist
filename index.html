@@ -27,6 +27,21 @@
 
         <div class="breadcrumbs-container" id="breadcrumbs"></div>
 
+        <div class="nav-control-panel" id="navControlPanel">
+            <span class="control-panel-title">DIRECTORY_NAVIGATION</span>
+            <div class="nav-control-buttons">
+                <button id="navHomeBtn" class="nav-btn-icon" title="Go to Root Folder" onclick="navigateHome()" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </button>
+                <button id="navBackBtn" class="nav-btn-icon" title="Go Back One Folder" onclick="navigateBack()" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <button id="navRefreshBtn" class="nav-btn-icon" title="Force Cloud Sync" onclick="refreshDatabase()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+                </button>
+            </div>
+        </div>
+
         <main id="vaultGrid" class="grid-output"></main>
     </div>
 
@@ -41,9 +56,9 @@
                 <div class="form-group">
                     <label>CLASSIFICATION CATEGORY</label>
                     <select id="fileCategory" required>
-                        <option value="Identification">Identification </option>                        
                         <option value="Education">Education </option>
-                        <option value="College">College </option>
+                        <option value="Identification">Identification </option>
+                        <option value="Admission">College</option>
                         <option value="Other">Other Miscellaneous Docs</option>
                     </select>
                 </div>

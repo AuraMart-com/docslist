@@ -4,7 +4,7 @@
         const BACKEND_API_URL = "https://script.google.com/macros/s/AKfycbz2l6cQkl3tTDk75GthnMQwKTxRNMYsHxz_AE8mlR-Iq_rJ5i3sBx-8gZHMvfpQyNfD/exec";
         const SHEETS_CSV_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsEc_TZ1SB0jVoBqyRPyEeQBDx6IyKRJ71iPx0ReMWnhVoNJqEmSUhVJufc7MqKHICZPkYZIsne8iv/pub?output=csv";
 
-        const DEFAULT_CATEGORIES = ["Education", "Identification", "College", "Other"];
+        const DEFAULT_CATEGORIES = ["Education", "Identification", "Admission", "Other"];
         let documentInventory = [];
         let currentPath = []; // Array of strings representing current folder path, e.g. ["Education", "2026"]
 
@@ -169,11 +169,53 @@
             renderVault();
         };
 
+        window.navigateHome = function() {
+            currentPath = [];
+            document.getElementById('searchBox').value = "";
+            renderVault();
+        };
+
+        window.navigateBack = function() {
+            if (currentPath.length > 0) {
+                currentPath.pop();
+                document.getElementById('searchBox').value = "";
+                renderVault();
+            }
+        };
+
+        window.refreshDatabase = async function() {
+            const btn = document.getElementById('navRefreshBtn');
+            if (btn) {
+                btn.classList.add('loading');
+                btn.disabled = true;
+            }
+            try {
+                await fetchDatabase();
+            } catch (err) {
+                console.error("Database sync fresh trigger failed:", err);
+            } finally {
+                if (btn) {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                }
+            }
+        };
+
         // Render matching vault records or directory contents
         function renderVault(filterTerm = "") {
             const grid = document.getElementById('vaultGrid');
             grid.innerHTML = "";
             const term = filterTerm.toLowerCase().trim();
+
+            // Dynamic nav controls button state updating
+            const homeBtn = document.getElementById('navHomeBtn');
+            const backBtn = document.getElementById('navBackBtn');
+            if (homeBtn) {
+                homeBtn.disabled = (currentPath.length === 0);
+            }
+            if (backBtn) {
+                backBtn.disabled = (currentPath.length === 0);
+            }
 
             // If searched, flat render ALL matching records
             if (term.length > 0) {
