@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "FileEntry": {
+      "title": "FileEntry",
+      "description": "Represents a physical file metadata stored in Firestore pointing to Google Drive",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique ID of the file entry" },
+        "title": { "type": "string", "description": "Display name of the file" },
+        "category": { "type": "string", "description": "Classification category" },
+        "parentFolder": { "type": "string", "description": "Parent directory folder ID or 'root'" },
+        "description": { "type": "string", "description": "Operational description or meta tags" },
+        "driveLink": { "type": "string", "description": "The URL of the Google Drive document physical file" },
+        "assetType": { "type": "string", "description": "Always 'File'" }
+      },
+      "required": ["id", "title", "category", "parentFolder", "driveLink", "assetType"]
+    },
+    "FolderEntry": {
+      "title": "FolderEntry",
+      "description": "Represents a directory folder metadata stored in Firestore",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique ID of the folder entry" },
+        "title": { "type": "string", "description": "Display name of the folder" },
+        "category": { "type": "string", "description": "Classification category, always 'Directory'" },
+        "parentFolder": { "type": "string", "description": "Parent directory folder ID or 'root'" },
+        "description": { "type": "string", "description": "Operational description or meta tags" },
+        "driveLink": { "type": "string", "description": "The URL of the Google Drive folder physical link or 'javascript:void(0)'" },
+        "assetType": { "type": "string", "description": "Always 'Folder'" }
+      },
+      "required": ["id", "title", "category", "parentFolder", "assetType"]
+    }
+  },
+  "firestore": {
+    "files": {
+      "schema": "FileEntry",
+      "description": "Firestore collection containing all uploaded files"
+    },
+    "folders": {
+      "schema": "FolderEntry",
+      "description": "Firestore collection containing all user-created folders"
+    }
+  }
+}
