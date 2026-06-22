@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SECURE://DOCS_VAULT</title>
+    <title>AuraFiles</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d6/Files_App_icon_iOS.png">
     <script type="importmap">
     {
       "imports": {
@@ -28,7 +29,7 @@
             </button>
         </div>
         <header>
-            <h2>SECURE_DOCUMENT_VAULT // AGENT_WORKSPACE</h2>
+            <h2>AuraFiles</h2>
             <div id="syncStatus" class="sync-status">● CONNECTING</div>
         </header>
 
@@ -112,7 +113,7 @@
 
     <div id="uploadModal" class="modal-overlay">
         <div class="modal-window">
-            <h3>SECURE_REPOSITORY_PROVISION //</h3>
+            <h3>New File</h3>
             <form id="uploadForm">
                 <div class="form-group">
                     <label>TARGET STORAGE FILES</label>
@@ -138,8 +139,8 @@
                     <textarea id="fileDescription" rows="3" placeholder="Enter file tracking descriptions or contextual metadata tags..." required></textarea>
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="cancel-btn" onclick="closeModal()">ABORT</button>
-                    <button type="submit" id="submitBtn" class="submit-btn">EXECUTE UPLOAD</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                    <button type="submit" id="submitBtn" class="submit-btn">Upload</button>
                 </div>
             </form>
         </div>
@@ -147,15 +148,15 @@
 
     <div id="folderModal" class="modal-overlay">
         <div class="modal-window">
-            <h3>SECURE_FOLDER_PROVISION //</h3>
+            <h3>New Folder</h3>
             <form id="folderForm">
                 <div class="form-group">
                     <label>FOLDER NAME</label>
                     <input type="text" id="folderNameInput" placeholder="Enter custom folder name..." required autocomplete="off">
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="cancel-btn" onclick="closeFolderModal()">ABORT</button>
-                    <button type="submit" class="submit-btn" id="submitFolderBtn">PROVISION FOLDER</button>
+                    <button type="button" class="cancel-btn" onclick="closeFolderModal()">Cancel</button>
+                    <button type="submit" class="submit-btn" id="submitFolderBtn">Add</button>
                 </div>
             </form>
         </div>
@@ -163,7 +164,7 @@
 
     <div id="detailsModal" class="modal-overlay">
         <div class="modal-window">
-            <h3>SECURE_METADATA_DECRYPT //</h3>
+            <h3>Details</h3>
             <div id="detailsContent" class="details-body">
                 <!-- Injected dynamically -->
             </div>
@@ -175,7 +176,7 @@
 
     <div id="renameModal" class="modal-overlay">
         <div class="modal-window">
-            <h3>SECURE_RENAME_AUTHORIZATION //</h3>
+            <h3>Rename File</h3>
             <form id="renameForm">
                 <input type="hidden" id="renameTargetType">
                 <input type="hidden" id="renameTargetId">
@@ -185,8 +186,8 @@
                     <input type="text" id="renameInput" required autocomplete="off">
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="cancel-btn" onclick="closeRenameModal()">ABORT</button>
-                    <button type="submit" class="submit-btn" id="submitRenameBtn">EXECUTE RENAME</button>
+                    <button type="button" class="cancel-btn" onclick="closeRenameModal()">Cancel</button>
+                    <button type="submit" class="submit-btn" id="submitRenameBtn">Rename</button>
                 </div>
             </form>
         </div>
@@ -194,7 +195,7 @@
 
     <div id="editModal" class="modal-overlay">
         <div class="modal-window">
-            <h3>SECURE_METADATA_EDIT //</h3>
+            <h3>Edit File</h3>
             <form id="editForm">
                 <input type="hidden" id="editTargetType">
                 <input type="hidden" id="editTargetId">
@@ -212,7 +213,7 @@
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="cancel-btn" onclick="closeEditModal()">ABORT</button>
-                    <button type="submit" class="submit-btn" id="submitEditBtn">EXECUTE UPDATE</button>
+                    <button type="submit" class="submit-btn" id="submitEditBtn">Update</button>
                 </div>
             </form>
         </div>
@@ -220,17 +221,17 @@
 
     <div id="deleteModal" class="modal-overlay">
         <div class="modal-window" style="border-color: #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);">
-            <h3 style="color: #ef4444;">CRITICAL_PURGE_SEQUENCE //</h3>
+            <h3 style="color: #ef4444;">Permanent Deletion</h3>
             <form id="deleteForm">
                 <input type="hidden" id="deleteTargetType">
                 <input type="hidden" id="deleteTargetId">
                 <div class="form-group">
                     <p style="color: var(--text); font-size: 0.95rem; margin-bottom: 12px; line-height: 1.45;" id="deletePromptMessage"></p>
-                    <p style="color: #ef4444; font-size: 0.8rem; letter-spacing: 0.5px; font-weight: bold; margin-top: 5px;">WARNING: THIS ACTION CANNOT BE UNDONE. INDEX AND ASSOCIATED DATA WILL BE PURGED PERMANENTLY.</p>
+                    <p style="color: #ef4444; font-size: 0.8rem; letter-spacing: 0.5px; font-weight: bold; margin-top: 5px;">WARNING: THIS ACTION CANNOT BE UNDONE.</p>
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="cancel-btn" onclick="closeDeleteModal()">ABORT</button>
-                    <button type="submit" class="submit-btn" style="background-color: #ef4444; color: white;" id="submitDeleteBtn">CONFIRM PURGE</button>
+                    <button type="button" class="cancel-btn" onclick="closeDeleteModal()">Cancel</button>
+                    <button type="submit" class="submit-btn" style="background-color: #ef4444; color: white;" id="submitDeleteBtn">Confirm</button>
                 </div>
             </form>
         </div>
@@ -250,8 +251,8 @@
                     </select>
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="cancel-btn" onclick="closeMoveModal()">ABORT</button>
-                    <button type="submit" class="submit-btn" id="submitMoveBtn">EXECUTE MOVE</button>
+                    <button type="button" class="cancel-btn" onclick="closeMoveModal()">Cancel</button>
+                    <button type="submit" class="submit-btn" id="submitMoveBtn">Move</button>
                 </div>
             </form>
         </div>

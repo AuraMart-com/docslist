@@ -630,7 +630,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                 });
 
                 if (matches.length === 0) {
-                    grid.innerHTML = `<p style="color: var(--text-muted)">NO OPERATIONAL RECORDS MATCHING SEARCH QUERY.</p>`;
+                    grid.innerHTML = `<p style="color: var(--text-muted)">No File or Folder matching your search query.</p>`;
                     return;
                 }
 
@@ -1883,9 +1883,9 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
             const title = doc ? doc.title : "Unidentified Asset";
 
             if (type === 'folder') {
-                promptEl.innerHTML = `You are about to initiate an offline system purge sequence for folder <strong style="color: var(--accent);">${title}</strong> and ALL nested subfolders or documents contained inside it.`;
+                promptEl.innerHTML = `You are about to permanently delete the Folder <strong style="color: var(--accent);">${title}</strong> and ALL nested subfolders or documents contained inside it.`;
             } else {
-                promptEl.innerHTML = `You are about to initiate an offline system purge sequence for document <strong style="color: var(--accent);">${title}</strong> (Registry index: ${id}).`;
+                promptEl.innerHTML = `You are about to permanently delete the document <strong style="color: var(--accent);">${title}</strong> (Registry index: ${id}).`;
             }
 
             document.getElementById('deleteModal').classList.add('active');
