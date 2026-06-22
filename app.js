@@ -1237,7 +1237,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
         window.triggerDirectFileDownload = function(driveLink, title) {
             if (!driveLink) return;
             const cleanLink = driveLink.trim().replace(/^["']|["']$/g, "");
-            const safeTitle = typeof title === 'string' ? title : (title ? String(title) : "secured_document");
+            const safeTitle = typeof title === 'string' ? title : (title ? String(title) : "document");
 
             if (cleanLink.startsWith("data:")) {
                 const link = document.createElement("a");
@@ -1276,10 +1276,10 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
             const viewerTitle = document.getElementById('viewerTitle');
             const viewerBody = document.getElementById('viewerBody');
 
-            const safeTitle = typeof title === 'string' ? title : (title ? String(title) : "SECURE_DOCUMENT");
+            const safeTitle = typeof title === 'string' ? title : (title ? String(title) : "DOCUMENT");
 
             if (viewerTitle) {
-                viewerTitle.innerText = `VIEW_FILE // ${safeTitle.toUpperCase()}`;
+                viewerTitle.innerText = `Preview: ${safeTitle}`;
             }
 
             // Set up fallback download / open in new tab events
@@ -1293,7 +1293,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                 openTabBtn.onclick = function() {
                     const cleanLink = driveLink.trim().replace(/^["']|["']$/g, "");
                     if (cleanLink.startsWith("javascript:")) {
-                        alert("Secure action script offline. Try regular uploads to link active cloud drives.");
+                        alert("Backend script is offline. Try uploading normally to link active cloud drives.");
                     } else {
                         window.open(cleanLink, "_blank");
                     }
@@ -1311,7 +1311,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
             if (viewerBody) {
                 viewerBody.innerHTML = `
                     <div class="viewer-loading-spinner">
-                        <div>🔄 DECRYPTING & DECODING STREAM...</div>
+                        <div>🔄 Loading Preview...</div>
                     </div>
                 `;
 
@@ -1340,8 +1340,8 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                             viewerBody.innerHTML = `
                                 <div class="viewer-code-container" style="color: #34d399; padding: 24px;">
                                     <div style="border: 2px dashed #34d399; padding: 20px; border-radius: 4px; background: rgba(52, 211, 153, 0.05); max-width: 600px; margin: 0 auto; line-height: 1.6; font-family: monospace;">
-                                        <h2 style="text-align: center; margin-bottom: 20px; font-family: monospace; letter-spacing: 2px;">🎓 ACADEMIC TRANSCRIPT //</h2>
-                                        <p><strong>REGISTRY ID:</strong> STU-99841-B</p>
+                                        <h2 style="text-align: center; margin-bottom: 20px; font-family: monospace; letter-spacing: 2px;">🎓 ACADEMIC TRANSCRIPT</h2>
+                                        <p><strong>STUDENT ID:</strong> STU-99841-B</p>
                                         <p><strong>VERIFIED EXAMINEE:</strong> DEMO CONTEXT USER</p>
                                         <hr style="border: 1px dashed #34d399; margin: 15px 0;">
                                         <table style="width: 100%; border-collapse: collapse; text-align: left;">
@@ -1361,7 +1361,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                                         </table>
                                         <hr style="border: 1px dashed #34d399; margin: 15px 0;">
                                         <p><strong>CUMULATIVE GPA:</strong> 3.92 / 4.00</p>
-                                        <p style="text-align: center; font-size: 0.75rem; opacity: 0.7; margin-top: 25px;">[🔐 DIGITAL VERIFICATION TOKEN APPROVED BY DEPT CLUSTER SECURE]</p>
+                                        <p style="text-align: center; font-size: 0.75rem; opacity: 0.7; margin-top: 25px;">[🔐 Digitally Verified and Approved]</p>
                                     </div>
                                 </div>
                             `;
@@ -1371,7 +1371,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                                     <div style="border: 2px solid #f59e0b; padding: 20px; border-radius: 4px; background: rgba(245, 158, 11, 0.05); max-width: 500px; margin: 0 auto; line-height: 1.6; font-family: monospace;">
                                         <div style="text-align: center; margin-bottom: 15px;">
                                             <span style="font-size: 2.5rem;">💸</span>
-                                            <h3 style="margin-top: 10px; font-family: monospace; color: #f59e0b;">TRANSACTION_RECEIPT //</h3>
+                                            <h3 style="margin-top: 10px; font-family: monospace; color: #f59e0b;">Receipt</h3>
                                         </div>
                                         <p><strong>ISSUER:</strong> OFFICE OF FINANCIAL REGISTRATION</p>
                                         <p><strong>TRANSACTION REF:</strong> TXN-994857183</p>
@@ -1396,7 +1396,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                                             <span>$5,000.00</span>
                                         </div>
                                         <div style="margin-top: 25px; text-align: center; background: #f59e0b; color: #000; font-weight: bold; padding: 8px; border-radius: 2px; letter-spacing: 1px;">
-                                            ✅ TRANSACTIONS SECURED // VERIFIED APPROVED
+                                            ✅ Verified and Approved
                                         </div>
                                     </div>
                                 </div>
@@ -1405,7 +1405,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                             viewerBody.innerHTML = `
                                 <div class="viewer-code-container" style="color: #60a5fa; padding: 24px;">
                                     <div style="border: 2px dashed #60a5fa; padding: 20px; border-radius: 8px; background: rgba(96, 165, 250, 0.05); max-width: 550px; margin: 0 auto; line-height: 1.5; font-family: monospace;">
-                                        <h3 style="text-align: center; color: #60a5fa; font-weight: bold; margin-bottom: 12px; letter-spacing: 1px;">GOVERNMENT OF INDIA // UIDAI RECORD</h3>
+                                        <h3 style="text-align: center; color: #60a5fa; font-weight: bold; margin-bottom: 12px; letter-spacing: 1px;">Aadhaar Verification Record</h3>
                                         <hr style="border-color: #60a5fa; margin-bottom: 15px;">
                                         <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
                                             <div style="width: 100px; height: 120px; border: 2px solid #5a5f7d; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; background: rgba(255,255,255,0.05); border-radius: 4px;">👤</div>
@@ -1413,13 +1413,13 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                                                 <p><strong>NAME:</strong> JASHUVA V. DEMO</p>
                                                 <p><strong>DOB:</strong> 12 / 08 / 1999</p>
                                                 <p><strong>GENDER:</strong> MALE</p>
-                                                <p><strong>ADDRESS:</strong> SECURE VAULT CLOUD REGISTRY, WORKSPACE CHIP NODE 4</p>
+                                                <p><strong>ADDRESS:</strong> AuraFiles Storage Server, Node 4</p>
                                             </div>
                                         </div>
                                         <div style="border: 1px solid #60a5fa; padding: 8px; text-align: center; font-size: 1.2rem; font-weight: bold; letter-spacing: 3px; margin-top: 20px; background: rgba(96, 165, 250, 0.1);">
                                             4882 9901 3855
                                         </div>
-                                        <p style="text-align: center; font-size: 0.7rem; color: #60a5fa; margin-top: 8px;">मेरा आधार, मेरी पहचान // MY AADHAAR, MY CLOUD IDENTITY</p>
+                                        <p style="text-align: center; font-size: 0.7rem; color: #60a5fa; margin-top: 8px;">My Aadhaar, My Cloud Identity</p>
                                     </div>
                                 </div>
                             `;
@@ -1427,17 +1427,17 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                             viewerBody.innerHTML = `
                                 <div class="viewer-code-container" style="color: #38bdf8; padding: 24px; font-family: monospace;">
                                     <div style="border: 1px solid #1e293b; padding: 16px; border-radius: 4px; background: #030712; line-height: 1.6;">
-                                        <span style="color: #64748b;">// CONFIG PRESET SECURITY VAULT MANIFEST FILE //</span>
-                                        <p style="color: #e2e8f0; margin-top: 10px;"><strong># SECURED SYSTEM ENVIRONMENT CONFIGS:</strong></p>
+                                        <span style="color: #64748b;">// System configurations //</span>
+                                        <p style="color: #e2e8f0; margin-top: 10px;"><strong># Environment configurations:</strong></p>
                                         <p>VAULT_PORT_INGRESS=3000</p>
                                         <p>REVERSE_PROXY_SSL=ACTIVE</p>
                                         <p>CLOUD_SYNC_REDUNDANCY=ENABLED</p>
                                         <p>METADATA_DECRYPTOR_ALGO=AES-256-GCM</p>
-                                        <p style="color: #e2e8f0; margin-top: 15px;"><strong># ACTIVE REMOTE REPOSITORIES:</strong></p>
+                                        <p style="color: #e2e8f0; margin-top: 15px;"><strong># Active Repositories:</strong></p>
                                         <p>FILES_RAW_DB="${FILES_CSV_URL}"</p>
                                         <p>FOLDERS_RAW_DB="${FOLDERS_CSV_URL}"</p>
                                         <p>BACKEND_TRANSMITTER="${BACKEND_API_URL}"</p>
-                                        <p style="color: #64748b; margin-top: 20px;">// END OF SYSTEM SECURED MANIFEST REPORT //</p>
+                                        <p style="color: #64748b; margin-top: 20px;">// End of manifest report //</p>
                                     </div>
                                 </div>
                             `;
@@ -1531,12 +1531,12 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                 if (!doc) return;
 
                 const isLocal = doc.driveLink && doc.driveLink.startsWith("data:");
-                const originLabel = isLocal ? "🔒 Secured Local Sandbox (Encrypted Offline)" : "🌐 Google Registry Synchronization Cloud Server";
+                const originLabel = isLocal ? "🔒 Local Database Storage" : "🌐 Google Drive Cloud Server";
 
                 contentEl.innerHTML = `
                     <div class="details-row">
                         <span class="details-key">Entry Type</span>
-                        <span class="details-val">📄 DOCUMENT FILE</span>
+                        <span class="details-val">📄 Document File</span>
                     </div>
                     <div class="details-row">
                         <span class="details-key">Asset Name</span>
@@ -1885,7 +1885,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
             if (type === 'folder') {
                 promptEl.innerHTML = `You are about to permanently delete the Folder <strong style="color: var(--accent);">${title}</strong> and ALL nested subfolders or documents contained inside it.`;
             } else {
-                promptEl.innerHTML = `You are about to permanently delete the document <strong style="color: var(--accent);">${title}</strong> (Registry index: ${id}).`;
+                promptEl.innerHTML = `You are about to permanently delete the document <strong style="color: var(--accent);">${title}</strong> (ID: ${id}).`;
             }
 
             document.getElementById('deleteModal').classList.add('active');
@@ -2008,17 +2008,17 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                     fileInventory = fileInventory.filter(doc => !allIdsToDelete.includes(doc.id));
                     folderInventory = folderInventory.filter(doc => !allIdsToDelete.includes(doc.id));
 
-                    showToast(`Purged ${itemsToDelete.length} selected items and contents!`, "success");
+                    showToast(`Deleted ${itemsToDelete.length} selected items!`, "success");
                     closeDeleteModal();
                     clearSelected();
                     fetchDatabase();
                 } catch (err) {
-                    console.error("Multi recursive purge failure:", err);
-                    showToast("Multi purge failed!", "error");
-                    alert(`🔴 CLOUD COMPREHENSIVE PURGE FAILURE!\n\nUnable to delete these items.\n\nError details:\n↳ "${err.message}"`);
+                    console.error("Multi recursive delete failure:", err);
+                    showToast("Multi delete failed!", "error");
+                    alert(`🔴 CLOUD DELETE FAILURE!\n\nUnable to delete these items.\n\nError details:\n↳ "${err.message}"`);
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "CONFIRM PURGE";
+                    submitBtn.innerText = "Confirm Deletion";
                 }
                 return;
             }
@@ -2033,13 +2033,13 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                 
                 if (!BACKEND_API_URL || BACKEND_API_URL.startsWith("PASTE_")) {
                     showToast("Delete disabled! Connect your Apps Script URL first.", "error");
-                    alert("🔴 DELETE FAILURE\nYou must configure and connect your Google Apps Script URL before you can delete files under the purely online sync mode.");
+                    alert("🔴 DELETE FAILURE\nYou must configure and connect your Google Apps Script URL before you can delete files.");
                     closeDeleteModal();
                     return;
                 }
 
                 submitBtn.disabled = true;
-                submitBtn.innerText = "PURGING CLOUD ARCHIVE...";
+                submitBtn.innerText = "Deleting File...";
                 
                 try {
                     const payload = {
@@ -2071,16 +2071,16 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
 
                     // Remove file matching matching ID from memory inventory
                     fileInventory = fileInventory.filter(item => item.id !== targetId);
-                    showToast(`File "${doc.title}" purged from Drive and Firestore database!`, "success");
+                    showToast(`File "${doc.title}" deleted successfully!`, "success");
                     closeDeleteModal();
                     fetchDatabase(); // Full reload sync
                 } catch (err) {
-                    console.error("Purge failure:", err);
-                    showToast("Purge action failed!", "error");
-                    alert(`🔴 CLOUD PURGE SEQUENCE BLOCKED!\n\nUnable to delete this file from database.\n\nError details:\n↳ "${err.message}"`);
+                    console.error("Delete failure:", err);
+                    showToast("Delete action failed!", "error");
+                    alert(`🔴 CLOUD DELETE SEQUENCE FAILED!\n\nUnable to delete this file.\n\nError details:\n↳ "${err.message}"`);
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "CONFIRM PURGE";
+                    submitBtn.innerText = "Confirm Deletion";
                 }
 
             } else if (type === 'folder') {
@@ -2182,16 +2182,16 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
                     fileInventory = fileInventory.filter(doc => !idsToDelete.includes(doc.id));
                     folderInventory = folderInventory.filter(doc => !idsToDelete.includes(doc.id));
                     
-                    showToast(`Directory "${docFolder.title}" and its contents have been securely purged from Drive and Firestore!`, "success");
+                    showToast(`Folder "${docFolder.title}" and its contents have been deleted!`, "success");
                     closeDeleteModal();
                     fetchDatabase(); // Full reload sync
                 } catch (err) {
-                    console.error("Folder recursive purge failure:", err);
-                    showToast("Folder purge failed!", "error");
-                    alert(`🔴 CLOUD COMPREHENSIVE PURGE FAILURE!\n\nUnable to delete this directory folder hierarchy.\n\nError details:\n↳ "${err.message}"`);
+                    console.error("Folder recursive delete failure:", err);
+                    showToast("Folder deletion failed!", "error");
+                    alert(`🔴 FOLDER DELETION FAILED!\n\nUnable to delete this folder and its contents.\n\nError details:\n↳ "${err.message}"`);
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "CONFIRM PURGE";
+                    submitBtn.innerText = "Confirm Deletion";
                 }
             }
 
@@ -2711,7 +2711,7 @@ const db = getFirestore(app, "ai-studio-f6532a40-48fa-408f-9e18-25d0101ad095");
 
             const promptEl = document.getElementById('deletePromptMessage');
             if (promptEl) {
-                promptEl.innerText = `You are about to permanently purge ${selectedItems.length} selected item(s) from the secure archive vault. All folders within directories will undergo recursive deletion sequence.`;
+                promptEl.innerText = `You are about to permanently delete the ${selectedItems.length} selected item(s). Any folders selected will delete their contents recursively.`;
             }
 
             document.getElementById('deleteModal').classList.add('active');

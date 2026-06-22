@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    <div class="vault-wrapper" style="margin-top: 20px;">
+    <div class="vault-wrapper" style="margin-top: 25px;">
         <div class="web-control-bar">
             <button class="web-control-btn" title="Go Back" onclick="window.history.back()">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -38,9 +38,9 @@
             <div class="diagnostic-header">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span class="diagnostic-icon">⚠️</span>
-                    <strong style="letter-spacing: 1px;">SYSTEM_STATE: INVALID_BACKEND_API_URL_DETECTED</strong>
+                    <strong style="letter-spacing: 1.5px;">Setup Needed: Missing Backend URL</strong>
                 </div>
-                <button class="diagnostic-toggle-btn" onclick="toggleDiagnosticDetails()">[SHOW DETAILED STEPS/CODE]</button>
+                <button class="diagnostic-toggle-btn" onclick="toggleDiagnosticDetails()">[Show Connection Steps]</button>
             </div>
             <div class="diagnostic-body">
                 <p>The current <strong>BACKEND_API_URL</strong> points to a Google Apps Script <strong>Library/Editor</strong> URL or spreadsheet link instead of an active <strong>Web App execution (<code>/exec</code>)</strong> endpoint.</p>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="action-row">
-            <input type="text" id="searchBox" class="search-engine" placeholder="Connecting to cloud registry synchronization loop..." disabled>
+            <input type="text" id="searchBox" class="search-engine" placeholder="Connecting to cloud database..." disabled>
             <div class="dropdown-wrapper">
                 <button class="add-btn" id="addBtn" onclick="toggleDropdown(event)">+</button>
                 <div class="dropdown-menu" id="addDropdown">
@@ -88,7 +88,7 @@
         <div class="breadcrumbs-container" id="breadcrumbs"></div>
 
         <div class="nav-control-panel" id="navControlPanel">
-            <span class="control-panel-title">DIRECTORY_NAVIGATION</span>
+            <span class="control-panel-title">Navigation</span>
             <span id="clipboardNotice" style="margin-left: auto; margin-right: 12px; font-size: 0.8rem; color: #10b981; display: none; font-weight: bold; background: rgba(16, 185, 129, 0.1); padding: 4px 10px; border-radius: 4px; border: 1px dashed rgba(16, 185, 129, 0.4);">
                 📋 COPIED: <span id="clipboardItemName">None</span>
             </span>
@@ -116,26 +116,26 @@
             <h3>New File</h3>
             <form id="uploadForm">
                 <div class="form-group">
-                    <label>TARGET STORAGE FILES</label>
+                    <label>CHOOSE FILES</label>
                     <input type="file" id="fileInput" required multiple>
                 </div>
                 <div class="form-group">
-                    <label>FILE DISPLAY NAME</label>
+                    <label>FILE NAME</label>
                     <input type="text" id="fileNameInput" placeholder="Specify document display title..." required autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label>CLASSIFICATION CATEGORY</label>
+                    <label>CATEGORY</label>
                     <input type="text" id="fileCategoryTagInput" placeholder="e.g. Invoice, Identification, Receipt, Education..." value="Other" required autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label>TARGET DIRECTORY</label>
+                    <label>DIRECTORY</label>
                     <div style="display: flex; gap: 8px;">
                         <input type="text" id="fileCategoryDisplay" readonly style="background-color: rgba(255, 255, 255, 0.05); color: var(--accent); cursor: not-allowed; border-color: var(--border); width: 100%; border-radius: 4px; padding: 10px; font-family: var(--font-mono); font-size: 0.85rem;" value="📁 ROOT">
                         <input type="hidden" id="fileCategory" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>OPERATIONAL DESCRIPTION</label>
+                    <label>DESCRIPTION</label>
                     <textarea id="fileDescription" rows="3" placeholder="Enter file tracking descriptions or contextual metadata tags..." required></textarea>
                 </div>
                 <div class="modal-actions">
@@ -169,7 +169,7 @@
                 <!-- Injected dynamically -->
             </div>
             <div class="modal-actions">
-                <button type="button" class="cancel-btn" style="width: 100%; margin-top: 10px;" onclick="closeDetailsModal()">DISMISS</button>
+                <button type="button" class="cancel-btn" style="width: 100%; margin-top: 10px;" onclick="closeDetailsModal()">Close</button>
             </div>
         </div>
     </div>
@@ -182,7 +182,7 @@
                 <input type="hidden" id="renameTargetId">
                 <input type="hidden" id="renameTargetOldName">
                 <div class="form-group">
-                    <label id="renameLabel">NEW ENTRY NAME</label>
+                    <label id="renameLabel">NEW NAME</label>
                     <input type="text" id="renameInput" required autocomplete="off">
                 </div>
                 <div class="modal-actions">
@@ -200,19 +200,19 @@
                 <input type="hidden" id="editTargetType">
                 <input type="hidden" id="editTargetId">
                 <div class="form-group">
-                    <label>DISPLAY NAME</label>
+                    <label>NAME</label>
                     <input type="text" id="editItemName" required autocomplete="off">
                 </div>
                 <div class="form-group" id="editItemCategoryGroup">
-                    <label>CATEGORY TAG</label>
+                    <label>CATEGORY</label>
                     <input type="text" id="editItemCategory" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label>OPERATIONAL DESCRIPTION</label>
+                    <label>DESCRIPTION</label>
                     <textarea id="editItemDescription" rows="3" required></textarea>
                 </div>
                 <div class="modal-actions">
-                    <button type="button" class="cancel-btn" onclick="closeEditModal()">ABORT</button>
+                    <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>
                     <button type="submit" class="submit-btn" id="submitEditBtn">Update</button>
                 </div>
             </form>
@@ -240,12 +240,12 @@
     <!-- Relocation Move Modal -->
     <div id="moveModal" class="modal-overlay">
         <div class="modal-window">
-            <h3>🚚 SECURE_RELOCATION_SERVICE //</h3>
+            <h3>🚚 Move Item</h3>
             <form id="moveForm">
                 <input type="hidden" id="moveTargetType">
                 <input type="hidden" id="moveTargetId">
                 <div class="form-group">
-                    <label id="moveLabel">SELECT TARGET DESTINATION DIRECTORY</label>
+                    <label id="moveLabel">SELECT DESTINATION FOLDER</label>
                     <select id="moveDestinationSelect" required style="width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); color: var(--text); border-radius: 4px; outline: none; font-family: monospace;">
                         <!-- Dynamic list of folders, plus 'root' -->
                     </select>
@@ -282,13 +282,13 @@
     <div id="viewerModal" class="modal-overlay">
         <div class="modal-window file-viewer-window">
             <div class="viewer-header">
-                <h3 id="viewerTitle">SECURE_FILE_PREVIEW //</h3>
+                <h3 id="viewerTitle">File Preview</h3>
                 <div class="viewer-actions">
-                    <button type="button" id="viewerDownloadBtn" class="viewer-secondary-btn" title="Download secure copy">
-                        📥 DOWNLOAD
+                    <button type="button" id="viewerDownloadBtn" class="viewer-secondary-btn" title="Download copy">
+                        📥 Download
                     </button>
                     <button type="button" id="viewerOpenTabBtn" class="viewer-secondary-btn" title="Open in raw tab">
-                        ↗ OPEN TAB
+                        ↗ Open Tab
                     </button>
                     <button type="button" class="cancel-btn close-viewer-btn" onclick="closeViewerModal()">✕</button>
                 </div>
