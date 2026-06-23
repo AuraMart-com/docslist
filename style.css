@@ -876,7 +876,7 @@
         /* Dynamic Toast System */
         #toast-container {
             position: fixed;
-            top: 24px;
+            top: 49px; /* Added 25px safe margin from status bar */
             right: 24px;
             z-index: 10000;
             display: flex;
@@ -888,14 +888,14 @@
         }
 
         .toast-card {
-            background: rgba(9, 15, 28, 0.95);
+            background: #090f1c; /* Solid background with zero transparency */
             border: 1px solid var(--border);
             color: var(--text);
             padding: 14px 18px;
             border-radius: 6px;
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -909,25 +909,25 @@
 
         .toast-card.active {
             transform: translateY(0);
-            opacity: 1;
+            opacity: 1; /* Fully opaque */
         }
 
         .toast-card.success {
             border-left-color: #10b981; /* Emerald/Green tint */
-            background: linear-gradient(90deg, rgba(16, 185, 129, 0.08) 0%, rgba(9, 15, 28, 0.98) 100%);
-            border-color: rgba(16, 185, 129, 0.3);
+            background: #0b251e; /* Fully solid dark green, 0% transparency */
+            border-color: rgba(16, 185, 129, 0.6);
         }
 
         .toast-card.error {
             border-left-color: #ef4444; /* Red tint */
-            background: linear-gradient(90deg, rgba(239, 68, 68, 0.08) 0%, rgba(9, 15, 28, 0.98) 100%);
-            border-color: rgba(239, 68, 68, 0.3);
+            background: #251012; /* Fully solid dark red, 0% transparency */
+            border-color: rgba(239, 68, 68, 0.6);
         }
 
         .toast-card.info {
             border-left-color: #38bdf8; /* Blue tint */
-            background: linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(9, 15, 28, 0.98) 100%);
-            border-color: rgba(56, 189, 248, 0.3);
+            background: #0b1a28; /* Fully solid dark blue, 0% transparency */
+            border-color: rgba(56, 189, 248, 0.6);
         }
 
         .toast-content {
